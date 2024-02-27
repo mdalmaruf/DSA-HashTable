@@ -18,7 +18,19 @@ A Hash Function takes a key and computes an index in the array where the key-val
 def simple_hash(self, key):
     return int(key[-3:]) % self.size
 ```
-This function maps the last three digits of a product ID to a hash table size using modulo operation.
+This function maps the last three digits of a product ID to a hash table size using modulo operation. The simple hash function can be implemented in different way. Another example?
+
+```python
+def ascii_hash(self, key):
+    # Sum ASCII values of all characters in the key
+    ascii_sum = sum(ord(char) for char in key)
+    # Use modulo to fit the hash table size
+    return ascii_sum % self.size
+```
+This hash function iterates through each character in the key, calculates its ASCII value using `ord()`, sums these values, and then applies modulo operation with the hash table size to ensure the result fits within the table bounds. It tends to distribute strings more uniformly across the table, especially when keys have varied lengths and characters.
+
+
+
 
 ## Collision Handling
 Collisions occur when two keys hash to the same index. A popular strategy to manage collisions is chaining, where each index in the array points to a list of entries that hash to the same index.

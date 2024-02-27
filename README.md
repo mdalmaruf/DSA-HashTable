@@ -83,5 +83,41 @@ When inserting a new key-value pair, if the hash index is already occupied, the 
 -  Collision Handling: Proper management of collisions ensures efficient data retrieval.
 -  Table Size and Resizing: The size of the hash table and its resizing strategy can significantly affect performance.
 
+## Hash Table Operations Example
+#### Inserting Items into the Hash Table
+Inserting `P1011`: Charger
+```
+Current State of Hash Table:
+Index: 0, Entries: [('P1010', 'Printer')]
+Index: 1, Entries: [('P1001', 'Laptop'), ('P1011', 'Charger')]
+Index: 2, Entries: [('P1002', 'Smartphone')]
+Index: 3, Entries: [('P1003', 'Tablet')]
+Index: 4, Entries: [('P1004', 'Monitor')]
+Index: 5, Entries: [('P1005', 'Keyboard')]
+Index: 6, Entries: [('P1006', 'Mouse')]
+Index: 7, Entries: [('P1007', 'Webcam')]
+Index: 8, Entries: [('P1008', 'Headset')]
+Index: 9, Entries: [('P1009', 'Microphone')]
+```
+Inserting `P1021`: External Hard Drive
+```
+Current State of Hash Table:
+Index: 0, Entries: [('P1010', 'Printer')]
+Index: 1, Entries: [('P1001', 'Laptop'), ('P1011', 'Charger'), ('P1021', 'External Hard Drive')]
+Index: 2, Entries: [('P1002', 'Smartphone')]
+Index: 3, Entries: [('P1003', 'Tablet')]
+Index: 4, Entries: [('P1004', 'Monitor')]
+Index: 5, Entries: [('P1005', 'Keyboard')]
+Index: 6, Entries: [('P1006', 'Mouse')]
+Index: 7, Entries: [('P1007', 'Webcam')]
+Index: 8, Entries: [('P1008', 'Headset')]
+Index: 9, Entries: [('P1009', 'Microphone')]
+```
+#### Searching in the Hash Table
+Searching for `P1005`...
+```
+Search Result: Keyboard
+```
+
 ## Conclusion
 Hash Tables, powered by efficient hash functions and effective collision handling strategies, are invaluable for creating fast and reliable applications that require quick access to data. Understanding their implementation and potential pitfalls is key to leveraging their full potential.

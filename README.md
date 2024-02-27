@@ -29,30 +29,6 @@ def ascii_hash(self, key):
 ```
 This hash function iterates through each character in the key, calculates its ASCII value using `ord()`, sums these values, and then applies modulo operation with the hash table size to ensure the result fits within the table bounds. It tends to distribute strings more uniformly across the table, especially when keys have varied lengths and characters.
 
-## Chaining- Insertion
-#### Initialization: The hash table is initialized as a list of None values, each representing a potential bucket for chaining.
-```python
-self.table = [None] * self.size
-```
-#### Insertion: When inserting a new key-value pair, the simple_hash function computes an index based on the key.
-
-- If the bucket at the calculated index is None, it's replaced with a new list containing the key-value tuple, starting a new chain.
-- If the bucket already contains a list (indicating a collision has occurred or the bucket is already in use), the method checks if the key exists:
-- If the key exists, its value is updated (this part of the logic ensures that each key remains unique within its bucket).
-- If the key does not exist, the new key-value pair is appended to the list, extending the chain.
-
-```python  
-def insert(self, key, value):
-    hash_index = self.simple_hash(key)
-    if self.table[hash_index] is None:
-        self.table[hash_index] = [(key, value)]
-    else:
-        for i, (k, v) in enumerate(self.table[hash_index]):
-            if k == key:
-                self.table[hash_index][i] = (key, value)
-                return
-        self.table[hash_index].append((key, value))
-```
 
 ## Collision Handling
 Collisions occur when two keys hash to the same index. A popular strategy to manage collisions is chaining, where each index in the array points to a list of entries that hash to the same index.
@@ -96,6 +72,34 @@ class ExtendedHashTable:
             else:
                 print(f"Index: {i}, Entries: None")
 ```
+
+## Chaining- Insertion
+#### Initialization: The hash table is initialized as a list of None values, each representing a potential bucket for chaining.
+```python
+self.table = [None] * self.size
+```
+#### Insertion: When inserting a new key-value pair, the simple_hash function computes an index based on the key.
+
+- If the bucket at the calculated index is None, it's replaced with a new list containing the key-value tuple, starting a new chain.
+- If the bucket already contains a list (indicating a collision has occurred or the bucket is already in use), the method checks if the key exists:
+- If the key exists, its value is updated (this part of the logic ensures that each key remains unique within its bucket).
+- If the key does not exist, the new key-value pair is appended to the list, extending the chain.
+
+```python  
+def insert(self, key, value):
+    hash_index = self.simple_hash(key)
+    if self.table[hash_index] is None:
+        self.table[hash_index] = [(key, value)]
+    else:
+        for i, (k, v) in enumerate(self.table[hash_index]):
+            if k == key:
+                self.table[hash_index][i] = (key, value)
+                return
+        self.table[hash_index].append((key, value))
+```
+
+
+
 ## Scenarios and Considerations
 #### Scenario 1: Insertion and Search
 When inserting a new key-value pair, if the hash index is already occupied, the new pair is appended to the list at that index, using chaining. This allows for efficient search operations, demonstrating the hash table's capability for fast data retrieval.

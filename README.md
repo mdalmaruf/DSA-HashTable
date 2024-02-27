@@ -1,6 +1,6 @@
 # Understanding Hash Tables and Hash Functions
 
-Hash Tables are a crucial data structure in computer science, used for storing key-value pairs. They offer fast retrieval, insertion, and deletion operations. This blog post dives into the concept of Hash Tables, the mechanics of Hash Functions, and tackles various scenarios and considerations in their application.
+Hash Tables are a crucial data structure in computer science, used for storing key-value pairs. They offer fast retrieval, insertion, and deletion operations. This discussion dives into the concept of Hash Tables, the mechanics of Hash Functions, and tackles various scenarios and considerations in their application.
 
 ## Introduction to Hash Tables
 
